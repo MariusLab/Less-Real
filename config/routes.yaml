@@ -1,0 +1,6 @@
+index:
+    path: /
+    controller: App\Controller\IndexController::index
+quote_search:
+    path: /quotes/search/{keyword}
+    controller: App\Controller\IndexController::search

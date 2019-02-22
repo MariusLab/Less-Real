@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="App\Entity\User">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">username</option>
+            <option name="message">There's already a user with this username</option>
+        </constraint>
+
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">email</option>
+            <option name="message">There's already a user with this email</option>
+        </constraint>
+
+        <property name="username">
+            <constraint name="NotBlank" />
+            <constraint name="NotNull" />
+            <constraint name="Length">
+                <option name="min">3</option>
+                <option name="max">28</option>
+            </constraint>
+        </property>
+        <property name="email">
+            <constraint name="Email" />
+        </property>
+        <property name="plainPassword">
+            <constraint name="NotBlank" />
+            <constraint name="Length">
+                <option name="min">8</option>
+                <option name="max">4096</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

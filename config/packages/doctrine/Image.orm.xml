@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="App\Repository\ImageRepository" name="App\Entity\Image" table="images">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="full" type="string" length="128" column="image" />
+        <field name="thumbnail" type="string" length="128" column="imagethumb" />
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist"/>
+            <lifecycle-callback type="preUpdate" method="preUpdate"/>
+        </lifecycle-callbacks>
+    </entity>
+</doctrine-mapping>

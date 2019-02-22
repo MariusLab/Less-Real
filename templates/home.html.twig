@@ -1,0 +1,53 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+    {% if search_keyword is defined %}
+        <div class="quote search-header"><a href="/">[x]</a> Quotes from <span class="keyword">{{ search_keyword }}</span></div>
+    {% endif %}
+    {% for quote in quotes %}
+        <div class="quote">
+            <div class="face">
+                <img src="{{ quote.getFullPathToFaceImage() }}"/>
+            </div>
+            <div class="body">
+                {{ quote.body }}
+            </div>
+            <br/>
+            <div class="source">
+                - <a href="{{ path('quote_search', { 'keyword': quote.author.label|url_encode }) }}">{{ quote.author.label }}</a>
+                (<a href="{{ path('quote_search', { 'keyword': quote.series.label|url_encode }) }}">{{ quote.series.label }}</a>)
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    {% endfor %}
+
+    {% if (max_page > 1) %}
+        <ul class="pagination justify-content-center">
+            {% if current_page > 1 %}
+                <li class="page-item"><a class="page-link" href="?p={{ current_page-1 }}">Previous</a></li>
+            {% endif %}
+            {% if current_page > 2 %}
+                <li class="page-item"><a class="page-link" href="?p={{ current_page-2 }}">{{ current_page-2 }}</a></li>
+            {% endif %}
+            {% if current_page > 1 %}
+                <li class="page-item"><a class="page-link" href="?p={{ current_page-1 }}">{{ current_page-1 }}</a></li>
+            {% endif %}
+            <li class="page-item active"><a class="page-link" href="#">{{ current_page }}</a></li>
+            {% set showNextPagesNum = 2 %}
+            {% if current_page == 1 %}
+                {% set showNextPagesNum = 3 %}
+            {% endif %}
+            {% if current_page < max_page %}
+                {% for i in current_page+1..current_page+showNextPagesNum %}
+                    {% if i <= max_page %}
+                        <li class="page-item"><a class="page-link" href="?p={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+                <li class="page-item"><a class="page-link" href="?p={{ current_page+1 }}">Next</a></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

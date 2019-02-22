@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+    <class name="App\Entity\Role">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">name</option>
+            <option name="message">There's already a role with this name</option>
+        </constraint>
+
+        <property name="name">
+            <constraint name="NotBlank" />
+            <constraint name="NotNull" />
+            <constraint name="Length">
+                <!-- ROLE_ -->
+                <option name="min">7</option>
+                <option name="max">32</option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="pattern">/^ROLE_[A-Z0-9]{2,}$/</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

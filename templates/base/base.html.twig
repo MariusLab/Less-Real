@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Anime Quotes - Words That Cut Deep</title>
+        <link rel="icon" href="/favicon.ico?5" type="image/x-icon" />
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('build/vendor.css') }}">
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+
+            <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+                    integrity="sha384-kW+oWsYx3YpxvjtZjFXqazFpA7UP/MbiY4jvs+RWZo2+N94PFZ36T6TFkc9O3qoB"
+                    crossorigin="anonymous"></script>
+            <script src="{{ asset('build/vendor.js') }}"></script>
+            <script src="{{ asset('build/app.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Begin header content -->
+        {% block header %}{% include 'base/header.html.twig' %}{% endblock %}
+
+        <!-- Begin page content -->
+        <main role="main" class="container">{% block body %}{% endblock %}</main>
+
+        <!-- Begin footer content -->
+        {% block footer %}{% include 'base/footer.html.twig' %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

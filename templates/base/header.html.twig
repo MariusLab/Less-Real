@@ -1,0 +1,25 @@
+{#
+<nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar navbar-top-level-button" href="{{ path('index') }}">Home</a>
+        <div class="nav navbar-nav navbar-right">
+            {% if is_granted('ROLE_USER') %}
+                <div class="dropdown user-dropdown">
+                    <a class="btn btn-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                        {{ app.user.username }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="{{ path('logout') }}">Logout</a>
+                    </div>
+                </div>
+            {% else %}
+                <a class="navbar navbar-top-level-button" href="{{ path('login') }}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+#}
+<div id="header" class="container text-center"><h4>Anime Quotes - Words That Cut Deep</h4></div>

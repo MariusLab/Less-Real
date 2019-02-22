@@ -1,0 +1,7 @@
+doctrine:
+    dbal:
+        dbname:               'testdb'
+        host:                 'laradock_mysql_1'
+        port:                 '3306'
+        user:                 'root'
+        password:             'root'
