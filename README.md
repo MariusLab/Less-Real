@@ -30,9 +30,9 @@
     npm install
     yarn encore dev
     php bin/console doctrine:database:create
-    php bin/console doctrine:database:migrate
+    php bin/console doctrine:migrations:migrate
     php bin/console doctrine:database:create --env=test
-    php bin/console doctrine:database:migrate --env=test    
+    php bin/console doctrine:migrations:migrate --env=test    
     
 ##### 7) Now open localhost on your browser and get to work!
    
